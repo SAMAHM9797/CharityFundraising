@@ -13,5 +13,5 @@
 - **Authentication**: google,email,facebook,twitter
 - **Deployment**: none (Yet)
 
-mysql-ctl start to start sql
+mysql-ctl start 
 sass --watch main.scss:main.css
