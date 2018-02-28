@@ -1898,16 +1898,16 @@ $panel-body-padding: 30px;
 
 .progress{
     background-color: white;
-	border:1px solid black;
+	border:1px solid #FF900;
 	border-radius:0px;
 	height:20px;
+	margin-bottom: 0px; // overide bootstrap
 }
 
 .progress-bar{
 	width:40%;
 	height:20px;
     background-color: #FF9900;
-	border-radius:5px;
 	margin-bottom: 0px; // overide bootstrap
 }
 
@@ -2042,20 +2042,56 @@ $panel-body-padding: 30px;
 
 // about page 
 // -----------------------------
-.content{
+.content {
 	padding:10px,0,0,10px;
 	//border-top:10px solid $primary-color;
 }
-.raised{
+.raised {
 	color:$primary-color;
 	font-size:2em;
 	letter-spacing:0;
 	margin:10px 0 0 0;
 }
-.donate{
+
+.donate {
 	width:100%;
 	background-color:$primary-color;
+	> :a {
+		background: $primary-color;
+	}
+}
+
+.donate-with-crypto{
+	background: $primary-color;
+	color:red;
+	&:hover{
+			background: $primary-color;
+	}
+	&:focus{
+			background: $primary-color;
+	}
+}
+
+#tabs{
+	margin-top:10px;
+	border-bottom:3px solid $primary-color;
+	padding:10px;
+}
+
+.tab-header{
+	background-color:none;
+}
+
+.tab-content{
 
 }
 
+.nav-tabs > li > a.active {
+		background-color:$primary-color;
+}
 
+.nav-tabs > li > a {
+	&:hover{
+		background-color:$primary-color;
+	}
+}

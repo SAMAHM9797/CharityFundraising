@@ -8515,15 +8515,15 @@ body.is-mobile.landing #footer {
 
 .progress {
   background-color: white;
-  border: 1px solid black;
+  border: 1px solid #FF900;
   border-radius: 0px;
-  height: 20px; }
+  height: 20px;
+  margin-bottom: 0px; }
 
 .progress-bar {
   width: 40%;
   height: 20px;
   background-color: #FF9900;
-  border-radius: 5px;
   margin-bottom: 0px; }
 
 .btn-toolbar > .btn {
@@ -8632,6 +8632,30 @@ body.is-mobile.landing #footer {
 
 .donate {
   width: 100%;
+  background-color: #FF9900; }
+  .donate > :a {
+    background: #FF9900; }
+
+.donate-with-crypto {
+  background: #FF9900;
+  color: red; }
+  .donate-with-crypto:hover {
+    background: #FF9900; }
+  .donate-with-crypto:focus {
+    background: #FF9900; }
+
+#tabs {
+  margin-top: 10px;
+  border-bottom: 3px solid #FF9900;
+  padding: 10px; }
+
+.tab-header {
+  background-color: none; }
+
+.nav-tabs > li > a.active {
+  background-color: #FF9900; }
+
+.nav-tabs > li > a:hover {
   background-color: #FF9900; }
 
 /*# sourceMappingURL=main.css.map */
