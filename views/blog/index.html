@@ -9,40 +9,27 @@
 			</header>
 
 			<!-- Main -->
+			
+ 			 <li></li>
+
+
 		
 			<section class="wrapper style2">
 				<div class="inner">
 					<div class = "container">
 						<div class = "row">
 							<div class = "col-md-6 image">
+								{% for blog in blogs %}
 							    <div class = "col-md-12 image">
     								<img src="images/pic03.jpg" class="img-fluid" alt="Responsive image">
     								<div class = "blog-card">
-        								<h3 class = "blog-title">Blog title - 1/1/2018</h3>
-        								<p  class = "blog-text">Things about the blog i love cryptocurrency</p>
+        								<h3 class = "blog-title">{{blog.title}}</h3>
+        								<p  class = "blog-text">{{blog.content}}</p>
     								</div>
 								</div>
-								 <div class = "col-md-12 image">
-    								<img src="images/pic03.jpg" class="img-fluid" alt="Responsive image">
-    								<div class = "blog-card">
-        								<h3 class = "blog-title">Blog title - 1/1/2018</h3>
-        								<p  class = "blog-text">Things about the blog i love cryptocurrency</p>
-    								</div>
-								</div>
-								 <div class = "col-md-12 image">
-    								<img src="images/pic03.jpg" class="img-fluid" alt="Responsive image">
-    								<div class = "blog-card">
-        								<h3 class = "blog-title">Blog title - 1/1/2018</h3>
-        								<p  class = "blog-text">Things about the blog i love cryptocurrency</p>
-    								</div>
-								</div>
-								 <div class = "col-md-12 image">
-    								<img src="images/pic03.jpg" class="img-fluid" alt="Responsive image">
-    								<div class = "blog-card">
-        								<h3 class = "blog-title">Blog title - 1/1/2018</h3>
-        								<p  class = "blog-text">Things about the blog i love cryptocurrency</p>
-    								</div>
-								</div>
+								{% else %}
+  <li>This would display if the 'item' collection were empty</li>
+{% endfor %}
 							</div>
 							<div class = "col-md-4 content">
 								<p class = "raised">£23,000 raised</p>
