@@ -11,3 +11,34 @@ exports.index = function(req, res) {
     });
   });
 };
+
+/**
+ * Get create new Blog Page
+ * */
+exports.blogGet = function(req, res) {
+    res.render('blog/create', {
+      title: 'New Blog',
+  });
+};
+
+exports.blogPost = function(req, res) {
+  req.assert('title', 'title cannot be blank').notEmpty();
+  req.assert('content', 'content cannot be blank').notEmpty();
+
+  var errors = req.validationErrors();
+
+  if (errors) {
+    req.flash('error', errors);
+    return res.redirect('/blog/new');
+  }
+  
+  Blog.forge({
+    title:req.body.title,
+    content:req.body.content
+  })
+  .save()
+  .then(function () {
+      req.flash('success', { msg: 'Thank you! Your blog has been posted' });
+      res.redirect('/blog');
+  });
+ };

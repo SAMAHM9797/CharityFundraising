@@ -9,4 +9,15 @@
 .blog-title {
   margin: 0; }
 
+.blog-form {
+  color: red; }
+  .blog-form:label {
+    color: red; }
+
+label {
+  color: #FF9000; }
+
+a > strong {
+  color: #FF9000; }
+
 /*# sourceMappingURL=blog.css.map */

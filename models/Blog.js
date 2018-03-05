@@ -1,7 +1,8 @@
 var bookshelf = require('../config/bookshelf');
 
 var Blog = bookshelf.Model.extend({
-  tableName: 'blogs'
+  tableName: 'blogs',
+  hasTimestamps: true
 });
 
 
