@@ -1881,8 +1881,9 @@ $panel-body-padding: 30px;
   }
 }
 
-.navbar-nav > li.active > a{
+.navbar-nav > li.active > .nav-link{
   border-bottom: 1px solid $primary-color;
+  
 }
 
 .navbar-nav > li > a{
@@ -1892,6 +1893,9 @@ $panel-body-padding: 30px;
   }
 }
 
+.nav-text{
+	color:$primary-color !important;;
+}
 
 // Progress
 // ------------------------- 
@@ -2094,4 +2098,13 @@ $panel-body-padding: 30px;
 	&:hover{
 		background-color:$primary-color;
 	}
+}
+
+.wrapper.style2 {
+    background-color: #2364AA;
+}
+
+.nav-link{
+	
+	color:red;
 }

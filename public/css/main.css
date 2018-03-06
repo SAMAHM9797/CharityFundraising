@@ -8506,12 +8506,15 @@ body.is-mobile.landing #footer {
       width: 30px;
       height: 30px; }
 
-.navbar-nav > li.active > a {
+.navbar-nav > li.active > .nav-link {
   border-bottom: 1px solid #FF9900; }
 
 .navbar-nav > li > a:hover {
   background-color: transparent;
   color: #FF9900; }
+
+.nav-text {
+  color: #FF9900 !important; }
 
 .progress {
   background-color: white;
@@ -8657,5 +8660,11 @@ body.is-mobile.landing #footer {
 
 .nav-tabs > li > a:hover {
   background-color: #FF9900; }
+
+.wrapper.style2 {
+  background-color: #2364AA; }
+
+.nav-link {
+  color: red; }
 
 /*# sourceMappingURL=main.css.map */
