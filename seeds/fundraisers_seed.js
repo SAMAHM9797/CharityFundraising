@@ -7,7 +7,7 @@ exports.seed = function(knex, Promise) {
 
     // Inserts seed entries
     knex('fundraisers').insert({
-      fundraiserId: 1, 
+      id: 1, 
       title: 'headsInc',
       content : 'memes',
       charity : 1,

@@ -20,6 +20,7 @@ var userController = require('./controllers/user');
 var contactController = require('./controllers/contact');
 var aboutController = require('./controllers/about');
 var blogController = require('./controllers/blog');
+var fundRaiserController = require('./controllers/fundraisers');
 
 // Passport OAuth strategies
 require('./config/passport');
@@ -54,6 +55,8 @@ app.get('/', HomeController.index);
 app.get('/about', aboutController.index);
 app.get('/contact', contactController.contactGet);
 app.post('/contact', contactController.contactPost);
+
+app.get('/fundraisers', fundRaiserController.index);
 
 //blog stuff
 app.get('/blog',blogController.index);
