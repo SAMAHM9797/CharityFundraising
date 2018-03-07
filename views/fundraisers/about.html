@@ -11,15 +11,16 @@
 			<section class="wrapper style2">
 				<div class="inner">
 					<div class = "container">
+						{% for fundraiser in fundraisers %}
 						<div class = "row">
 							<div class = "col-md-8 image">
 								<img src="images/pic03.jpg" class="img-fluid" alt="Responsive image">
 							</div>
-							<div class = "col-md-4 content">
+							<div class = " col-md-4 content">
 								<p class = "raised">£23,000 raised</p>
-								<p class = "backers">By 100 donors</p>
-								<p>Created by {{fundraiser.name}}</p>
-								<p>{{fundraiser.content}}</p>
+								<p class = "donors">By 100 donors</p>
+								<p class = "charity">Created by {{fundraiser.name}}</p>
+								<p class = "charity-content">{{fundraiser.content}}</p>
 								<button class = "donate"> 
 									<a class="donate-with-crypto"
 	    								href="https://commerce.coinbase.com/checkout/ccb4ff09-5a5d-4916-b913-883f486affc5">
@@ -28,6 +29,7 @@
 								</button>
 							</div>
 						</div>
+						{% endfor %}
 					</div>
 				</div>
 			</section>

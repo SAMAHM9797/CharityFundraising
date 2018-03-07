@@ -2,6 +2,17 @@ var Fundraisers = require('../models/Fundraiser');
 var bookshelf = require('../config/bookshelf');
 
 exports.index = function(req, res) {
+  bookshelf.knex.from('fundraisers').leftJoin('charities', 'fundraisers.id', 'charities.id').then(function(fundraisers){
+    console.log(fundraisers);
+    res.render('fundraisers/index', {
+      title: 'Fundraisers',
+      fundraisers : fundraisers
+    });
+  });
+};
+
+
+exports.view = function(req, res) {
     bookshelf.knex.from('fundraisers').leftJoin('charities', 'fundraisers.id', 'charities.id').first()
     .then(function(fundraiser){
       console.log(fundraiser);

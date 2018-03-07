@@ -57,6 +57,7 @@ app.get('/contact', contactController.contactGet);
 app.post('/contact', contactController.contactPost);
 
 app.get('/fundraisers', fundRaiserController.index);
+app.get('/fundraisers/view', fundRaiserController.view);
 app.get('/fundraisers/create' , fundRaiserController.createGet);
 app.post('/fundraisers/create' , fundRaiserController.createPost);
 //blog stuff
