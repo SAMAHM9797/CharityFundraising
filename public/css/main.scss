@@ -2083,7 +2083,7 @@ $panel-body-padding: 30px;
 }
 
 .tab-header{
-	background-color:none;
+	background-color:$primary-color;
 }
 
 .tab-content{
@@ -2105,6 +2105,5 @@ $panel-body-padding: 30px;
 }
 
 .nav-link{
-	
 	color:red;
 }
