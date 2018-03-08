@@ -1,13 +1,12 @@
-var Fundraisers = require('../models/Fundraiser');
+var Fundraisers = require('../models/Charity');
 var bookshelf = require('../config/bookshelf');
 
 exports.index = function(req, res) {
-  // bookshelf.knex.from('fundraisers').leftJoin('charities', 'fundraisers.id', 'charities.id').then(function(fundraisers){
-  bookshelf.knex.select().from('fundraisers').then(function(fundraisers){
-    console.log(fundraisers);
-    res.render('fundraisers/index', {
-      title: 'Fundraisers',
-      fundraisers:fundraisers
+  bookshelf.knex.from('charities').then(function(charities){
+    console.log(charities);
+    res.render('charities/index', {
+      title: 'Charities',
+      charities:charities
     });
   });
 };
@@ -35,13 +34,18 @@ exports.createGet = function(req,res){
 }
 
 exports.createPost = function(req,res){
+ 
   /** todo validation **/
+
   var errors = req.validationErrors();
+
   if (errors) {
     req.flash('error', errors);
-    return res.redirect('/fundraisers/create');
+    return res.redirect('/blog/new');
   }
-  console.log(req.body);
+  
+  console.log(req);
+ 
   Fundraisers.forge({
     title:req.body.title,
     content:req.body.content,

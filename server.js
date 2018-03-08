@@ -21,7 +21,7 @@ var contactController = require('./controllers/contact');
 var aboutController = require('./controllers/about');
 var blogController = require('./controllers/blog');
 var fundRaiserController = require('./controllers/fundraisers');
-
+var charityController = require('./controllers/charity');
 // Passport OAuth strategies
 require('./config/passport');
 
@@ -55,15 +55,18 @@ app.get('/', HomeController.index);
 app.get('/about', aboutController.index);
 app.get('/contact', contactController.contactGet);
 app.post('/contact', contactController.contactPost);
-
+//fundraises
 app.get('/fundraisers', fundRaiserController.index);
 app.get('/fundraisers/view', fundRaiserController.view);
 app.get('/fundraisers/create' , fundRaiserController.createGet);
 app.post('/fundraisers/create' , fundRaiserController.createPost);
+
+//charitites 
+app.get('/charities',charityController.index);
 //blog stuff
 app.get('/blog',blogController.index);
-app.get('/blog/new',blogController.blogGet);
-app.post('/blog/new',blogController.blogPost);
+app.get('/blog/create',blogController.blogGet);
+app.post('/blog/create',blogController.blogPost);
 //User stuff
 app.get('/account', userController.ensureAuthenticated, userController.accountGet);
 app.put('/account', userController.ensureAuthenticated, userController.accountPut);
