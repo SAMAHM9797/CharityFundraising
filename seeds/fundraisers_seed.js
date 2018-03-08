@@ -11,6 +11,7 @@ exports.seed = function(knex, Promise) {
       title: 'headsInc',
       content : 'memes',
       charity : 1,
+      walletAddress :'mrdn1ShuwZXBcer9K8K1bRgQ2So7xXREMa',
       location : 'manchester'
     })
   );
