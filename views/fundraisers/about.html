@@ -5,30 +5,77 @@
 		<!-- Header -->
 			<header id="header" class="alt">
 				<title>about</title>
-				{% include "partials/newHeader.html" %}
+				{% include "partials/header3.html" %}
 			</header>
 			<!-- Main -->
+		
 			<section class="wrapper style2">
 				<div class="inner">
 					<div class = "container">
 						<div class = "row">
 							<div class = "col-md-8 image">
-								<img src="images/pic03.jpg" class="img-fluid" alt="Responsive image">
+								<img src="https://i.ytimg.com/vi/rki3Zayql4s/maxresdefault.jpg" class="img-fluid" alt="Responsive image">
 							</div>
-							<div class = " col-md-4 content">
-								<p class = "raised">£23,000 raised</p>
-								<p class = "donors">By 100 donors</p>
-								<p class = "charity">Created by {{fundraiser.name}}</p>
-								<p class = "charity-content">{{fundraiser.content}}</p>
-								<button class = "donate"> 
+							<div class = "col-md-4 content">
+								<p class = "raised">10₿ Donated</p>
+								<p class = "charity">Middleton Community Group </p></p>
+								<p>Morbi mattis mi consectetur tortor elementum, varius pellentesque velit convallis. Aenean tincidunt lectus auctor mauris maximus, ac scelerisque ipsum tempor. </p>
+								<button class = "donate "data-toggle="modal" data-target="#exampleModal" > 
 									<a class="donate-with-crypto"
 	    								href="https://commerce.coinbase.com/checkout/ccb4ff09-5a5d-4916-b913-883f486affc5">
 	    								<span>Donate with Crypto</span>
 	  								</a>
 								</button>
+								<!-- Modal -->
+								<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+								  <div class="modal-dialog modal-dialog-centered" role="document">
+								    <div class="modal-content">
+								      <div class="modal-header">
+								        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+								       
+								        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								          <span aria-hidden="true">&times;</span>
+								        </button>
+								      </div>
+								      <div class="modal-body">
+								         <img class = "img-responsive"  src = "https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=mrdn1ShuwZXBcer9K8K1bRgQ2So7xXREMa"/>...
+								      </div>
+								      <div class="modal-footer">
+								        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+								        <button type="button" class="btn btn-primary">Save changes</button>
+								      </div>
+								    </div>
+								  </div>
+								</div>
 							</div>
 						</div>
-					</div>
+						<section>
+							<div class ="row">
+								<div class = "col-sm-12">
+									<ul class="nav nav-tabs">
+						 	 			<div class = "col-md-4 tab-head">
+									   		<li><a href="#about" data-toggle="tab">About</a></li>
+								   		</div>
+								   		<div class = "col-md-4 tab-head">
+									   		<li><a href="#updates" data-toggle="tab">Updates</a></li>
+							    		</div> 
+						    			<div class = "col-md-4 tab-head ">
+							    			<li><a href="#donations" data-toggle="tab">Donations</a></li>
+						     			</div>	
+						  			</ul>
+							   </div>
+							   <div class="tab-content">
+							   		<div class="tab-pane active fade in " id="about">
+										<p>Morbi mattis mi consectetur tortor elementum, varius pellentesque velit convallis. Aenean tincidunt lectus auctor mauris maximus, ac scelerisque ipsum tempor. </p>
+										<p>Morbi mattis mi consectetur tortor elementum, varius pellentesque velit convallis. Aenean tincidunt lectus auctor mauris maximus, ac scelerisque ipsum tempor. </p>
+										<p>Morbi mattis mi consectetur tortor elementum, varius pellentesque velit convallis. Aenean tincidunt lectus auctor mauris maximus, ac scelerisque ipsum tempor. </p>
+										<p>Morbi mattis mi consectetur tortor elementum, varius pellentesque velit convallis. Aenean tincidunt lectus auctor mauris maximus, ac scelerisque ipsum tempor. </p>
+								   </div>
+								   <div class="tab-pane fade" id="updates">BBB</div>
+								   <div class="tab-pane fade" id="donations">CCC</div>
+								</div>
+							</div>
+						</section>
 				</div>
 			</section>
 	
