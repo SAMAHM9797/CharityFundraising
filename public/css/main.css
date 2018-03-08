@@ -7298,7 +7298,9 @@ input[type="radio"] + label:before {
   position: relative; }
   .image img {
     border-radius: 3px;
-    display: block; }
+    display: block;
+    max-width: 100%;
+    max-height: 100%; }
   .image.left {
     float: left;
     margin: 0 2em 2em 0;
@@ -8666,5 +8668,9 @@ body.is-mobile.landing #footer {
 
 .nav-link {
   color: red; }
+
+.wrapper.style2 {
+  background-color: #EEEEEE;
+  color: black; }
 
 /*# sourceMappingURL=main.css.map */

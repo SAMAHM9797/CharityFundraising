@@ -40,4 +40,13 @@
   text-align: left;
   vertical-align: middle; }
 
+.modal-header {
+  background-color: #FF9000; }
+
+.img-responsive {
+  margin: 0 auto; }
+
+.modal-footer > button {
+  background-color: #FF9000; }
+
 /*# sourceMappingURL=about.css.map */

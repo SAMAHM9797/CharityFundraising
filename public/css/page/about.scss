@@ -1,3 +1,5 @@
+$primary-color:#FF9000;
+
 .wrapper.style2 {
     background-color: #eee;
     color:black;
@@ -62,4 +64,16 @@
   display: inline-block;
   text-align: left;
   vertical-align: middle;
+}
+
+.modal-header{
+    background-color:#FF9000;
+}
+
+.img-responsive {
+    margin: 0 auto;
+}
+
+.modal-footer > button {
+    background-color:$primary-color;
 }
