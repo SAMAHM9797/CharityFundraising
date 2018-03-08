@@ -7298,7 +7298,9 @@ input[type="radio"] + label:before {
   position: relative; }
   .image img {
     border-radius: 3px;
-    display: block; }
+    display: block;
+    max-width: 100%;
+    max-height: 100%; }
   .image.left {
     float: left;
     margin: 0 2em 2em 0;
@@ -8506,24 +8508,27 @@ body.is-mobile.landing #footer {
       width: 30px;
       height: 30px; }
 
-.navbar-nav > li.active > a {
+.navbar-nav > li.active > .nav-link {
   border-bottom: 1px solid #FF9900; }
 
 .navbar-nav > li > a:hover {
   background-color: transparent;
   color: #FF9900; }
 
+.nav-text {
+  color: #FF9900 !important; }
+
 .progress {
   background-color: white;
-  border: 1px solid black;
+  border: 1px solid #FF900;
   border-radius: 0px;
-  height: 20px; }
+  height: 20px;
+  margin-bottom: 0px; }
 
 .progress-bar {
   width: 40%;
   height: 20px;
   background-color: #FF9900;
-  border-radius: 5px;
   margin-bottom: 0px; }
 
 .btn-toolbar > .btn {
@@ -8633,5 +8638,39 @@ body.is-mobile.landing #footer {
 .donate {
   width: 100%;
   background-color: #FF9900; }
+  .donate > :a {
+    background: #FF9900; }
+
+.donate-with-crypto {
+  background: #FF9900;
+  color: red; }
+  .donate-with-crypto:hover {
+    background: #FF9900; }
+  .donate-with-crypto:focus {
+    background: #FF9900; }
+
+#tabs {
+  margin-top: 10px;
+  border-bottom: 3px solid #FF9900;
+  padding: 10px; }
+
+.tab-header {
+  background-color: none; }
+
+.nav-tabs > li > a.active {
+  background-color: #FF9900; }
+
+.nav-tabs > li > a:hover {
+  background-color: #FF9900; }
+
+.wrapper.style2 {
+  background-color: #2364AA; }
+
+.nav-link {
+  color: red; }
+
+.wrapper.style2 {
+  background-color: #EEEEEE;
+  color: black; }
 
 /*# sourceMappingURL=main.css.map */

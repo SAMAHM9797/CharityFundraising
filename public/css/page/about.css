@@ -1,0 +1,52 @@
+.wrapper.style2 {
+  background-color: #eee;
+  color: black; }
+
+.nav-link {
+  color: #FF9000; }
+
+.content {
+  padding: 10px; }
+
+.charity .backers {
+  padding: 0px !important; }
+
+.charity-content {
+  padding: 0px; }
+
+.tab-head {
+  text-align: center;
+  padding: 10px; }
+
+.image img {
+  max-width: 100%; }
+
+.nav-tabs {
+  margin-top: 10px;
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd; }
+
+.modal {
+  text-align: center; }
+
+@media screen and (min-width: 768px) {
+  .modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%; } }
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle; }
+
+.modal-header {
+  background-color: #FF9000; }
+
+.img-responsive {
+  margin: 0 auto; }
+
+.modal-footer > button {
+  background-color: #FF9000; }
+
+/*# sourceMappingURL=about.css.map */

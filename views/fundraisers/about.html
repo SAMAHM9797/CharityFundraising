@@ -20,12 +20,29 @@
 								<p class = "raised">10₿ Donated</p>
 								<p class = "charity">Middleton Community Group </p></p>
 								<p>Morbi mattis mi consectetur tortor elementum, varius pellentesque velit convallis. Aenean tincidunt lectus auctor mauris maximus, ac scelerisque ipsum tempor. </p>
-								<button class = "donate"> 
-									<a class="donate-with-crypto"
-	    								href="https://commerce.coinbase.com/checkout/ccb4ff09-5a5d-4916-b913-883f486affc5">
-	    								<span>Donate with Crypto</span>
-	  								</a>
-								</button>
+								<button class = "donate "data-toggle="modal" data-target="#exampleModal">Donate Bitcoin</button>
+								<!-- Modal -->
+								<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+								  <div class="modal-dialog modal-dialog-centered" role="document">
+								    <div class="modal-content">
+								      <div class="modal-header">
+								        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+								       
+								        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								          <span aria-hidden="true">&times;</span>
+								        </button>
+								      </div>
+								      <div class="modal-body">
+								         <img class = "img-responsive"  src = "https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=mrdn1ShuwZXBcer9K8K1bRgQ2So7xXREMa"/>
+								         <br>
+								         {{fundraiser.walletAddress}}
+								      </div>
+								      <div class="modal-footer">
+								        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+								      </div>
+								    </div>
+								  </div>
+								</div>
 							</div>
 						</div>
 						<section>
