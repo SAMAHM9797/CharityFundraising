@@ -1,50 +1,69 @@
 
-    <nav id = "nav">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" data-toggle="collapse" data-target="#navbar" class="navbar-expand collapsed">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a href="/" class="navbar-brand">Project name</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="{% if title == 'Home' %}active{% endif %}"><a href="/">Home</a></li>
-            <li class="{% if title == 'About' %}active{% endif %}"><a href="/about">About</a></li>
-            <li class="{% if title == 'Contact' %}active{% endif %}"><a href="/contact">Contact</a></li>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Brand</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="{% if title == 'Home' %}active{% endif %}"><a href="/">Link <span class="sr-only">(current)</span></a></li>
+        <li><a href="/about">About</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/blog">View</a></li>
+            <li role="separator" class="divider"></li>
+              <li><a href="/blog/create">Create</a></li>
+              <li><a href="/blog/edit">Edit</a></li>
+              <li><a href="/blog/delete">Delete</a></li>
+            <li role="separator" class="divider"></li>
           </ul>
-        <ul class="nav navbar-nav navbar-right">
-        {% if user %}
-          <li class="dropdown">
-            <a href="#" data-toggle="dropdown" class="navbar-avatar dropdown-toggle">
-              {% if user.picture %}
-                <img src="{{ user.picture }}">
-              {% else %}
-                <img src="{{ user.gravatar }}">
-              {% endif %}
-              {% if user.name %}
-                {{ user.name }}
-              {% elif user.email %}
-                {{ user.email }}
-              {% else %}
-                {{ user.id }}
-              {% endif %}
-              <i class="caret"></i>
-            </a>
-            <ul class="dropdown-menu">
-              <li><a href="/account">My Account</a></li>
-              <li class="divider"></li>
-              <li><a href="/logout">Logout</a></li>
-            </ul>
-          </li>
-        {% else %}
-          <li class="{% if title == 'Log in' %}active{% endif %}"><a href="/login">Log in</a></li>
-          <li class="{% if title == 'Sign up' %}active{% endif %}"><a href="/signup">Sign up</a></li>
-        {% endif %}
-        </ul>
-        </div>
-      </div>
-    </nav>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Fundraiser<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/fundraisers">View</a></li>
+            <li role="separator" class="divider"></li>
+              <li><a href="/fundraisers/create">Create</a></li>
+              <li><a href="/fundraisers/edit">Edit</a></li>
+              <li><a href="/fundraisers/delete">Delete</a></li>
+            <li role="separator" class="divider"></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Charity<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+           <li><a href="/charities">View</a></li>
+             <li role="separator" class="divider"></li>
+              <li><a href="/charities/create">Create</a></li>
+              <li><a href="/charities/edit">Edit</a></li>
+              <li><a href="/charities/delete">Delete</a></li>
+            <li role="separator" class="divider"></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

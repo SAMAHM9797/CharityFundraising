@@ -57,7 +57,8 @@ app.get('/contact', contactController.contactGet);
 app.post('/contact', contactController.contactPost);
 //fundraises
 app.get('/fundraisers', fundRaiserController.index);
-app.get('/fundraisers/view', fundRaiserController.view);
+app.get('/fundraisers/view/', fundRaiserController.view);
+app.get('/fundraisers/view/:id(\\d+)?/', fundRaiserController.viewOne);
 app.get('/fundraisers/create' , fundRaiserController.createGet);
 app.post('/fundraisers/create' , fundRaiserController.createPost);
 

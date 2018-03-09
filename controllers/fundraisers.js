@@ -14,7 +14,23 @@ exports.index = function(req, res) {
 
 
 exports.view = function(req, res) {
+  console.log(req.params.fundId);
     bookshelf.knex.from('fundraisers').leftJoin('charities', 'fundraisers.id', 'charities.id').first()
+    .then(function(fundraiser){
+      console.log(fundraiser);
+       res.render('fundraisers/about', {
+        title: 'Fundraiser',
+        fundraiser:fundraiser
+      });
+    });
+  };
+  
+exports.viewOne = function(req, res) {
+    
+    var fundId = req.params.fundId; // get the parameter passed
+    //todo validation
+    
+    bookshelf.knex.from('fundraisers').leftJoin('charities', 'fundraisers.id', 'charities.id').where('fundraisers.id', fundId).first()
     .then(function(fundraiser){
       console.log(fundraiser);
        res.render('fundraisers/about', {

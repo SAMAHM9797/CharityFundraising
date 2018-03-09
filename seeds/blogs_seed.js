@@ -6,16 +6,18 @@ exports.seed = function(knex, Promise) {
 
     // Inserts seed entries
     knex('blogs').insert({
-        title: "i love memes", 
-        content: "memes are so good"
+        title: "blog 1", 
+        content: "this is a blog",
+        created_at: new Date(2018,1,2)
     }),
     knex('blogs').insert({
-        title: "i love memes", 
-        content: "memes are so good"
+        title: "blog 2", 
+        content: "this is a blog",
+        created_at: new Date(2018,1,2)
     }),
     knex('blogs').insert({
-        title: "i love memes", 
-        content: "memes are so good"
+        title: "blog 2", 
+        content: "this is a blog",
     })
   );
 };

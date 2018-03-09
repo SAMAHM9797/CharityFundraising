@@ -5,7 +5,7 @@
 		<!-- Header -->
 			<header id="header" class="alt">
 				<title>about</title>
-				{% include "partials/header3.html" %}
+				{% include "partials/header.html" %}
 			</header>
 			<!-- Main -->
 		
@@ -14,13 +14,18 @@
 					<div class = "container">
 						<div class = "row">
 							<div class = "col-md-8 image">
-								<img src="https://i.ytimg.com/vi/rki3Zayql4s/maxresdefault.jpg" class="img-fluid" alt="Responsive image">
+								<img src="https://images.unsplash.com/photo-1509059852496-f3822ae057bf?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a26fa6ef06a6598afacebe2cde9be106&auto=format&fit=crop&w=2056&q=80" class="img-fluid" alt="Responsive image">
 							</div>
 							<div class = "col-md-4 content">
 								<p class = "raised">10₿ Donated</p>
 								<p class = "charity">Middleton Community Group </p></p>
 								<p>Morbi mattis mi consectetur tortor elementum, varius pellentesque velit convallis. Aenean tincidunt lectus auctor mauris maximus, ac scelerisque ipsum tempor. </p>
-								<button class = "donate "data-toggle="modal" data-target="#exampleModal">Donate Bitcoin</button>
+								<button class = "donate "data-toggle="modal" data-target="#exampleModal" > 
+									<a class="donate-with-crypto"
+	    								href="https://commerce.coinbase.com/checkout/ccb4ff09-5a5d-4916-b913-883f486affc5">
+	    								<span>Donate with Crypto</span>
+	  								</a>
+								</button>
 								<!-- Modal -->
 								<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 								  <div class="modal-dialog modal-dialog-centered" role="document">
@@ -33,12 +38,13 @@
 								        </button>
 								      </div>
 								      <div class="modal-body">
-								         <img class = "img-responsive"  src = "https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=mrdn1ShuwZXBcer9K8K1bRgQ2So7xXREMa"/>
+								         <img class = "img-responsive"  src = "https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl={{fundraiser.walletAddress}}"/>
 								         <br>
 								         {{fundraiser.walletAddress}}
 								      </div>
 								      <div class="modal-footer">
 								        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+								        <button type="button" class="btn btn-primary">Save changes</button>
 								      </div>
 								    </div>
 								  </div>
