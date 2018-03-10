@@ -12,7 +12,7 @@ exports.index = function(req, res) {
   });
 };
 
-
+//this is depreciated and no longer needed
 exports.view = function(req, res) {
   console.log(req.params.fundId);
     bookshelf.knex.from('fundraisers').leftJoin('charities', 'fundraisers.id', 'charities.id').first()
@@ -25,6 +25,7 @@ exports.view = function(req, res) {
     });
   };
   
+//view a certain fundraiser
 exports.viewOne = function(req, res) {
     
     var fundId = req.params.fundId; // get the parameter passed

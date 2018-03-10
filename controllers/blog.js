@@ -21,6 +21,7 @@ exports.blogGet = function(req, res) {
   });
 };
 
+//create new blog post (only for admins)
 exports.blogPost = function(req, res) {
   req.assert('title', 'title cannot be blank').notEmpty();
   req.assert('content', 'content cannot be blank').notEmpty();

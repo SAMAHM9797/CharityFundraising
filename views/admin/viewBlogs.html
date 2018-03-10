@@ -1,0 +1,52 @@
+{% extends 'layouts/adminLayout.html' %}
+{% block body %}
+	<!-- Page Wrapper -->
+	<div id="page-wrapper">
+		<!-- Header -->
+			<header id="header" class="alt">
+				<title>about</title>
+				{% include "partials/adminHeader.html" %}
+			</header>
+
+			<!-- Main -->
+			
+			<section class="wrapper style2">
+				<div class="inner">
+					<div class = "container">
+						<table class="table table-bordered">
+                          <thead>
+                            <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">Title</th>
+                              <th scope="col">Content</th>
+                              <th scope="col">Image</th>
+                              <th scope="col">Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              
+                             {% for blog in blogs %}
+                              <th scope="row">{{blog.blogId}}</th>
+                              <td>{{blog.title}}</td>
+                              <td>{{blog.content}}</td>
+                              <td></td>
+                              <td>
+                                <button type="button" class=" delete btn btn-danger btn-sm">
+                                  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                </button>
+                                <button type="button" class=" delete btn btn-danger btn-sm">
+                                  <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                </button>
+                              </td>
+                            </tr>
+                            {%endfor%}
+                     
+                          </tbody>
+                        </table>
+
+                        
+                    </div>
+			</section>
+		</div>
+{% endblock %}
