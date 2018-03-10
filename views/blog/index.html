@@ -16,35 +16,17 @@
 						<div class = "row">
 							<div class = "col-md-6">
 								{% for blog in blogs %}
-							    <div class = "col-md-12 image">
+							    <div class = "col-md-6 image">
     								<img src="images/pic03.jpg" class="img-fluid" alt="Responsive image">
     								<div class = "blog-card">
         								<h3 class = "blog-title">{{blog.title}}</h3>
         								<p  class = "blog-text">{{blog.content}}</p>
+        								<p  class = "blog-link"> <a href ="/blog/{{blog.blogId}}">Read More ... </a></p>
     								</div>
 								</div>
 								{% else %}
  									 <li>This would display if the 'item' collection were empty</li>
 								{% endfor %}
-							</div>
-							<div class = "col-md-4 content">
-								<p class = "raised">£23,000 raised</p>
-								<p class = "backers">By 100 donors</p>
-								<p>Morbi mattis mi consectetur tortor elementum, varius pellentesque velit convallis. Aenean tincidunt lectus auctor mauris maximus, ac scelerisque ipsum tempor. </p>
-								<p>Morbi mattis mi consectetur tortor elementum, varius pellentesque velit convallis. Aenean tincidunt lectus auctor mauris maximus, ac scelerisque ipsum tempor. </p>
-								<p>Morbi mattis mi consectetur tortor elementum, varius pellentesque velit convallis. Aenean tincidunt lectus auctor mauris maximus, ac scelerisque ipsum tempor. </p>
-								<p>Morbi mattis mi consectetur tortor elementum, varius pellentesque velit convallis. Aenean tincidunt lectus auctor mauris maximus, ac scelerisque ipsum tempor. </p>
-								<p>Morbi mattis mi consectetur tortor elementum, varius pellentesque velit convallis. Aenean tincidunt lectus auctor mauris maximus, ac scelerisque ipsum tempor. </p>
-								<p>Morbi mattis mi consectetur tortor elementum, varius pellentesque velit convallis. Aenean tincidunt lectus auctor mauris maximus, ac scelerisque ipsum tempor. </p>
-								<p>Morbi mattis mi consectetur tortor elementum, varius pellentesque velit convallis. Aenean tincidunt lectus auctor mauris maximus, ac scelerisque ipsum tempor. </p>
-								<p>Morbi mattis mi consectetur tortor elementum, varius pellentesque velit convallis. Aenean tincidunt lectus auctor mauris maximus, ac scelerisque ipsum tempor. </p>
-								<p>Morbi mattis mi consectetur tortor elementum, varius pellentesque velit convallis. Aenean tincidunt lectus auctor mauris maximus, ac scelerisque ipsum tempor. </p>
-								<button class = "donate"> 
-									<a class="donate-with-crypto"
-	    								href="https://commerce.coinbase.com/checkout/ccb4ff09-5a5d-4916-b913-883f486affc5">
-	    								<span>Donate with Crypto</span>
-	  								</a>
-								</button>
 							</div>
 						</div>
 					</div>
