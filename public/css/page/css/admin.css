@@ -7,4 +7,11 @@ thead {
 .delete {
   background-color: red; }
 
+.adminSearch {
+  width: 100%;
+  margin-bottom: 10px; }
+
+.delete-header {
+  background-color: red; }
+
 /*# sourceMappingURL=admin.css.map */

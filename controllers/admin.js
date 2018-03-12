@@ -22,7 +22,7 @@ exports.viewBlogs = function(req, res) {
 //function called when user creates a blog 
 //called from ajax function 
 //when created returns json
-exports.postBlogs = function(req, res) {
+exports.createBlog = function(req, res) {
   req.assert('title', 'title cannot be blank').notEmpty();
   req.assert('content', 'content cannot be blank').notEmpty();
 
@@ -44,3 +44,16 @@ exports.postBlogs = function(req, res) {
   });
    
 };
+
+exports.editBlog = function(req,res){
+  Blog.forge({blogId: 34})
+  .save({
+    title:req.body.title,
+    content:req.body.content
+    
+  })
+  .then(function () {
+      req.flash('success', { msg: 'Thank you! Your blog has been updted' });
+       res.send("success");
+  });
+}
