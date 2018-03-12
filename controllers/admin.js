@@ -1,28 +1,28 @@
 var Blog = require('../models/Blog');
-
+var bookshelf = require('../config/bookshelf');
 /**
  * GET /
  */
 exports.index = function(req, res) {
-  Blog.forge().fetchAll().then(function(blogs){
-    res.render('blog/index', {
-      title: 'Blog',
-      blogs: blogs.serialize()
-    });
+  res.render('admin/index', {
+    title: 'Admin'
   });
 };
 
-/**
- * Get create new Blog Page
- * */
-exports.blogGet = function(req, res) {
-    res.render('blog/create', {
-      title: 'New Blog',
+exports.viewBlogs = function(req, res) {
+  bookshelf.knex.select().from('blogs').then(function(blogs){
+    console.log(blogs);
+    res.render('admin/viewBlogs', {
+        title: 'view blogs',
+        blogs:blogs
+      });
   });
 };
 
-//create new blog post (only for admins)
-exports.blogPost = function(req, res) {
+//function called when user creates a blog 
+//called from ajax function 
+//when created returns json
+exports.postBlogs = function(req, res) {
   req.assert('title', 'title cannot be blank').notEmpty();
   req.assert('content', 'content cannot be blank').notEmpty();
 
@@ -30,7 +30,7 @@ exports.blogPost = function(req, res) {
 
   if (errors) {
     req.flash('error', errors);
-    return res.redirect('/blog/new');
+    res.send("error");
   }
   
   Blog.forge({
@@ -40,6 +40,7 @@ exports.blogPost = function(req, res) {
   .save()
   .then(function () {
       req.flash('success', { msg: 'Thank you! Your blog has been posted' });
-      res.redirect('/blog');
+      res.send("success");
   });
- };
+   
+};

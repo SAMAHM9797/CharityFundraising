@@ -22,6 +22,7 @@ var aboutController = require('./controllers/about');
 var blogController = require('./controllers/blog');
 var fundRaiserController = require('./controllers/fundraisers');
 var charityController = require('./controllers/charity');
+var adminController = require('./controllers/admin');
 // Passport OAuth strategies
 require('./config/passport');
 
@@ -55,18 +56,26 @@ app.get('/', HomeController.index);
 app.get('/about', aboutController.index);
 app.get('/contact', contactController.contactGet);
 app.post('/contact', contactController.contactPost);
+
 //fundraises
 app.get('/fundraisers', fundRaiserController.index);
-app.get('/fundraisers/view', fundRaiserController.view);
+app.get('/fundraisers/view/', fundRaiserController.view);
+app.get('/fundraisers/:id(\\d+)?/', fundRaiserController.viewOne);
 app.get('/fundraisers/create' , fundRaiserController.createGet);
 app.post('/fundraisers/create' , fundRaiserController.createPost);
 
 //charitites 
 app.get('/charities',charityController.index);
+
 //blog stuff
 app.get('/blog',blogController.index);
 app.get('/blog/create',blogController.blogGet);
 app.post('/blog/create',blogController.blogPost);
+
+//admin
+app.get('/admin',adminController.index);
+app.get('/admin/blogs',adminController.viewBlogs);
+app.post('/admin/blogs',adminController.postBlogs);
 //User stuff
 app.get('/account', userController.ensureAuthenticated, userController.accountGet);
 app.put('/account', userController.ensureAuthenticated, userController.accountPut);
@@ -87,6 +96,7 @@ app.get('/auth/google', passport.authenticate('google', { scope: 'profile email'
 app.get('/auth/google/callback', passport.authenticate('google', { successRedirect: '/', failureRedirect: '/login' }));
 app.get('/auth/twitter', passport.authenticate('twitter'));
 app.get('/auth/twitter/callback', passport.authenticate('twitter', { successRedirect: '/', failureRedirect: '/login' }));
+
 
 // Production error handler
 if (app.get('env') === 'production') {

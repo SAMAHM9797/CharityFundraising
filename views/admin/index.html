@@ -1,11 +1,11 @@
-{% extends 'layouts/blogLayout.html' %}
+{% extends 'layouts/adminLayout.html' %}
 {% block body %}
 	<!-- Page Wrapper -->
 	<div id="page-wrapper">
 		<!-- Header -->
 			<header id="header" class="alt">
 				<title>about</title>
-				{% include "partials/header.html" %}
+				{% include "partials/adminHeader.html" %}
 			</header>
 
 			<!-- Main -->
@@ -14,14 +14,14 @@
 				<div class="inner">
 					<div class = "container">
 						<div class = "row">
-							<div class = "col-md-6">
-								{% for blog in blogs %}
-							    <div class = "col-md-6 image">
+							<div class = "col-md-12">
+								{% for fundraiser in fundraisers %}
+							    <div class = "col-md-4 image">
     								<img src="images/pic03.jpg" class="img-fluid" alt="Responsive image">
     								<div class = "blog-card">
-        								<h3 class = "blog-title">{{blog.title}}</h3>
-        								<p  class = "blog-text">{{blog.content}}</p>
-        								<p  class = "blog-link"> <a href ="/blog/{{blog.blogId}}">Read More ... </a></p>
+        								<h3 class = "blog-title">{{fundraiser.title}}</h3>
+        								<p  class = "blog-text">{{fundraiser.content}} {{fundraiser.content}} {{fundraiser.content}} {{fundraiser.content}} </p>
+    									<a href = "/fundraisers/{{fundraiser.id}}">Read More</a>
     								</div>
 								</div>
 								{% else %}
