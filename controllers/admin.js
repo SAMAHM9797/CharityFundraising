@@ -12,7 +12,7 @@ exports.index = function(req, res) {
 exports.viewBlogs = function(req, res) {
   bookshelf.knex.select().from('blogs').then(function(blogs){
     console.log(blogs);
-    res.render('admin/viewBlogs', {
+    res.render('admin/Blogs/viewBlogs', {
         title: 'view blogs',
         blogs:blogs
       });
@@ -36,24 +36,40 @@ exports.createBlog = function(req, res) {
   Blog.forge({
     title:req.body.title,
     content:req.body.content
-  })
-  .save()
+  }).save()
   .then(function () {
       req.flash('success', { msg: 'Thank you! Your blog has been posted' });
       res.send("success");
   });
-   
 };
 
+/**
+ * Response to ajax call 
+ * takes id and updates the record.
+ * If success then return sucess and flash 
+ * other wise return failure 
+ * todo validate id
+ **/
 exports.editBlog = function(req,res){
-  Blog.forge({blogId: 34})
+  Blog.forge({blogId:34})
   .save({
     title:req.body.title,
     content:req.body.content
-    
-  })
-  .then(function () {
-      req.flash('success', { msg: 'Thank you! Your blog has been updted' });
+  }).then(function () {
+       req.flash('success', { msg: 'Your blog has been updated' });
        res.send("success");
+  });
+}
+
+exports.viewBlog = function(req,res){
+  var blogId = req.params.blogId; // get the parameter passed
+    //todo validation
+    bookshelf.knex.from('blogs').where('blogId', blogId).first()
+    .then(function(blog){
+      console.log(blog);
+       res.render('admin/Blogs/viewBlog', {
+        title: 'Blog',
+        blog:blog
+      });
   });
 }

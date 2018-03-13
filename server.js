@@ -77,6 +77,7 @@ app.get('/admin',adminController.index);
 app.get('/admin/blogs',adminController.viewBlogs);
 app.post('/admin/blogs',adminController.createBlog);
 app.post('/admin/blogs/edit',adminController.editBlog);
+app.get('/admin/blogs/:blogId(\\d+)?/', adminController.viewBlog);
 //User stuff
 app.get('/account', userController.ensureAuthenticated, userController.accountGet);
 app.put('/account', userController.ensureAuthenticated, userController.accountPut);

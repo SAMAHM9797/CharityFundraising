@@ -40,7 +40,8 @@ exports.viewOne = function(req, res) {
       });
     });
   };
-  
+
+//this is depreciated and no longer needed  
 exports.createGet = function(req,res){
     bookshelf.knex.select('id','name').from('charities').then(function(charities){
     console.log(charities);
@@ -50,7 +51,7 @@ exports.createGet = function(req,res){
       });
     });
 }
-
+//this is depreciated and no longer needed
 exports.createPost = function(req,res){
   /** todo validation **/
   var errors = req.validationErrors();
@@ -65,7 +66,7 @@ exports.createPost = function(req,res){
     walletAddress:req.body.walletAddress,
     charity:req.body.charitySelect
   }).save().then(function () {
-      req.flash('success', { msg: 'Thank you! Your blog has been created' });
+      req.flash('success', { msg: 'Thank you! Your fundraiser has been created' });
       res.redirect('/fundraisers');
     });  
  };

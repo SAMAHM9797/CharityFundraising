@@ -14,4 +14,10 @@ thead {
 .delete-header {
   background-color: red; }
 
+label {
+  color: #FF9000; }
+
+input {
+  background: #EEEEEE; }
+
 /*# sourceMappingURL=admin.css.map */
