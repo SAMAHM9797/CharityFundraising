@@ -13,11 +13,16 @@ thead {
 
 .delete-header {
   background-color: red; }
+  .delete-header h4, .delete-header h5 {
+    color: white; }
 
 label {
   color: #FF9000; }
 
 input {
   background: #EEEEEE; }
+
+tr > th {
+  color: white; }
 
 /*# sourceMappingURL=admin.css.map */

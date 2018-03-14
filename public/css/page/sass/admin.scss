@@ -18,6 +18,10 @@ thead{
 
 .delete-header{
     background-color:red;
+    
+    h4,h5{
+        color:white;
+    }
 }
 
 label{
@@ -26,4 +30,9 @@ label{
 
 input{
     background:#EEEEEE;
+}
+
+
+tr > th{
+    color:white;
 }

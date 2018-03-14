@@ -1,5 +1,8 @@
-var Blog = require('../models/Blog');
-var bookshelf = require('../config/bookshelf');
+var Blog        = require('../models/Blog');
+var Fundraiser  = require('../models/Fundraiser');
+var bookshelf   = require('../config/bookshelf');
+
+
 /**
  * GET /
  */
@@ -9,6 +12,8 @@ exports.index = function(req, res) {
   });
 };
 
+
+//------------------BLOG STUFF---------------------//
 exports.viewBlogs = function(req, res) {
   bookshelf.knex.select().from('blogs').then(function(blogs){
     console.log(blogs);
@@ -31,7 +36,7 @@ exports.createBlog = function(req, res) {
   if (errors) {
     req.flash('error', errors);
     res.send("error");
-  }
+  };
   
   Blog.forge({
     title:req.body.title,
@@ -46,9 +51,7 @@ exports.createBlog = function(req, res) {
 /**
  * Response to ajax call 
  * takes id and updates the record.
- * If success then return sucess and flash 
- * other wise return failure 
- * todo validate id
+ * todo validate id 
  **/
 exports.editBlog = function(req,res){
   Blog.forge({blogId:34})
@@ -59,7 +62,7 @@ exports.editBlog = function(req,res){
        req.flash('success', { msg: 'Your blog has been updated' });
        res.send("success");
   });
-}
+};
 
 exports.viewBlog = function(req,res){
   var blogId = req.params.blogId; // get the parameter passed
@@ -72,4 +75,72 @@ exports.viewBlog = function(req,res){
         blog:blog
       });
   });
-}
+};
+
+//----------------------Charity Stuff-------------------------\\
+
+exports.viewCharities = function(req, res) {
+  bookshelf.knex.select().from('charities').then(function(charities){
+    console.log(charities);
+    res.render('admin/Charities/viewCharities', {
+        title: 'view blogs',
+        charities:charities
+      });
+  });
+};
+
+/**
+ * Response to ajax call 
+ * takes id and updates the record.
+ * todo validate id 
+ **/
+exports.createCharity = function(req, res) {
+  req.assert('email', 'title cannot be blank').notEmpty();
+  req.assert('name', 'title cannot be blank').notEmpty();
+  req.assert('content', 'content cannot be blank').notEmpty();
+
+  var errors = req.validationErrors();
+
+  if (errors) {
+    req.flash('error', errors);
+    res.send("error");
+  }
+  
+  Blog.forge({
+    title:req.body.title,
+    content:req.body.content
+  }).save()
+  .then(function () {
+      req.flash('success', { msg: 'Thank you! Your fundraiser has been posted' });
+      res.send("success");
+  });
+};
+
+/**
+ * Response to ajax call 
+ * takes id and updates the record.
+ * todo validate id 
+ **/
+exports.editCharity = function(req,res){
+  Blog.forge({blogId:34})
+  .save({
+    title:req.body.title,
+    content:req.body.content
+  }).then(function () {
+       req.flash('success', { msg: 'Your blog has been updated' });
+       res.send("success");
+  });
+};
+
+exports.viewCharity = function(req,res){
+  var blogId = req.params.blogId; // get the parameter passed
+    //todo validation
+    bookshelf.knex.from('blogs').where('blogId', blogId).first()
+    .then(function(blog){
+      console.log(blog);
+       res.render('admin/Blogs/viewBlog', {
+        title: 'Blog',
+        blog:blog
+      });
+  });
+};

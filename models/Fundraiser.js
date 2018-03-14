@@ -6,8 +6,7 @@ var Fundraiser = bookshelf.Model.extend({
   hasTimestamps: true,
   charity : function(){
       return this.belongsTo(Charity,'charityId');
-
-  }
+    }
 });
 
 

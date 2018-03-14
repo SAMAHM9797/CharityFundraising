@@ -74,10 +74,20 @@ app.post('/blog/create',blogController.blogPost);
 
 //admin
 app.get('/admin',adminController.index);
+//admin/blogs
 app.get('/admin/blogs',adminController.viewBlogs);
 app.post('/admin/blogs',adminController.createBlog);
 app.post('/admin/blogs/edit',adminController.editBlog);
+app.post('/admin/blogs/delete',adminController.deleteBlog);
 app.get('/admin/blogs/:blogId(\\d+)?/', adminController.viewBlog);
+//admin/charities
+app.get('/admin/charities',adminController.viewCharities);
+app.post('/admin/charities',adminController.createCharity);
+app.post('/admin/charities/edit',adminController.editCharity);
+app.post('/admin/charities/delete',adminController.deleteCharity);
+app.get('/admin/charities/:charitiesId(\\d+)?/', adminController.viewCharity);
+//admin/charities
+
 //User stuff
 app.get('/account', userController.ensureAuthenticated, userController.accountGet);
 app.put('/account', userController.ensureAuthenticated, userController.accountPut);
