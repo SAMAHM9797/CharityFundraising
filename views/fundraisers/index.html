@@ -1,35 +1,30 @@
-{% extends 'layouts/blogLayout.html' %}
-{% block body %}
-	<!-- Page Wrapper -->
-	<div id="page-wrapper">
-		<!-- Header -->
-			<header id="header" class="alt">
-				<title>about</title>
-				{% include "partials/header.html" %}
-			</header>
+{% extends 'layouts/blogLayout.html' %} {% block body %}
+<!-- Page Wrapper -->
+<!-- Header -->
 
-			<!-- Main -->
-			
-			<section class="wrapper style2">
-				<div class="inner">
-					<div class = "container">
-						<div class = "row">
-							<div class = "col-md-12">
-								{% for fundraiser in fundraisers %}
-							    <div class = "col-md-4 image">
-    								<img src="images/pic03.jpg" class="img-fluid" alt="Responsive image">
-    								<div class = "blog-card">
-        								<h3 class = "blog-title">{{fundraiser.title}}</h3>
-        								<p  class = "blog-text">{{fundraiser.content}} {{fundraiser.content}} {{fundraiser.content}} {{fundraiser.content}} </p>
-    									<a href = "/fundraisers/{{fundraiser.id}}">Read More</a>
-    								</div>
-								</div>
-								{% else %}
- 									 <li>This would display if the 'item' collection were empty</li>
-								{% endfor %}
-							</div>
-						</div>
-					</div>
-			</section>
+
+<!-- Main -->
+{% include "partials/header.html" %}
+
+<div class="container">
+	<div class="row">
+		{% for fundraiser in fundraisers %}
+		<div class="col-md-4">
+			<div class="col-md-12 image post">
+				<img src="images/pic03.jpg" class="img-fluid" alt="Responsive image">
+				<div class="blog-card">
+					<h3 class="blog-title">{{fundraiser.title}}</h3>
+					<p class="blog-text">{{fundraiser.content}}{{fundraiser.content}} </p>
+					<a href="/fundraisers/{{fundraiser.id}}">Read More</a>
+				</div>
+			</div>
 		</div>
+		{% else %}
+		<li>This would display if the 'item' collection were empty</li>
+		{% endfor %}
+	</div>
+</div>
+
+
+
 {% endblock %}

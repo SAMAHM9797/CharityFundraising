@@ -101,6 +101,8 @@
 
 
 $("#getDonation").click(function(e) {
+	$("li").find(".active").removeClass("active");
+	$(this).addClass("active");
 	console.log("hello")
     var url = "https://api.blockcypher.com/v1/btc/test3/addrs/mhKmx8fQfTdZyArpUpqAhz328HgtK32txn"; // the script where you handle the form input.
     $.ajax({
@@ -117,4 +119,5 @@ $("#getDonation").click(function(e) {
 
 
 
-
+   
+   

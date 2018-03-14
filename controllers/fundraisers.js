@@ -27,16 +27,15 @@ exports.view = function(req, res) {
   
 //view a certain fundraiser
 exports.viewOne = function(req, res) {
-    
-    var fundId = req.params.fundId; // get the parameter passed
+    var fundId = req.params.id; // get the parameter passed
     //todo validation
-    
     bookshelf.knex.from('fundraisers').leftJoin('charities', 'fundraisers.id', 'charities.id').where('fundraisers.id', fundId).first()
     .then(function(fundraiser){
       console.log(fundraiser);
        res.render('fundraisers/about', {
         title: 'Fundraiser',
         fundraiser:fundraiser
+     
       });
     });
   };

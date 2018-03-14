@@ -65,6 +65,7 @@ $panel-body-padding: 30px;
 	}
 
 	body {
+		
 		background: _palette(bg);
 
 		&.is-loading {
@@ -125,7 +126,7 @@ $panel-body-padding: 30px;
 		font-weight: _font(weight-extrabold);
 		letter-spacing: _size(letter-spacing-alt);
 		line-height: 1em;
-		margin: 0 0 (_size(element-margin) * 0.5) 0;
+		margin: 0 0 (_size(element-margin) * 0.1) 0;
 		text-transform: uppercase;
 
 		a {
@@ -2062,15 +2063,21 @@ $panel-body-padding: 30px;
 
 .donate {
 	width:100%;
+	color:white;
 	background-color:$primary-color;
 	> :a {
 		background: $primary-color;
+	}
+	
+	&:hover{
+		color:$primary-color;
+		background-color:white;
 	}
 }
 
 .donate-with-crypto{
 	background: $primary-color;
-	color:red;
+
 	&:hover{
 			background: $primary-color;
 	}
