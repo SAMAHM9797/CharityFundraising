@@ -84,7 +84,7 @@ app.get('/admin/blogs/:blogId(\\d+)?/', adminController.viewBlog);
 app.get('/admin/charities',adminController.viewCharities);
 app.post('/admin/charities',adminController.createCharity);
 app.post('/admin/charities/edit',adminController.editCharity);
-app.post('/admin/charities/delete',adminController.deleteCharity);
+// app.post('/admin/charities/delete',adminController.deleteCharity);
 app.get('/admin/charities/:charitiesId(\\d+)?/', adminController.viewCharity);
 //admin/charities
 

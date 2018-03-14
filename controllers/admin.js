@@ -64,6 +64,12 @@ exports.editBlog = function(req,res){
   });
 };
 
+exports.deleteBlog = function(req,res){
+  console.log(req.body.id);
+  res.send("success");
+  
+};
+
 exports.viewBlog = function(req,res){
   var blogId = req.params.blogId; // get the parameter passed
     //todo validation

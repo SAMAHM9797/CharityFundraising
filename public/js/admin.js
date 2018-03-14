@@ -7,7 +7,7 @@ $(".delete").click(function(e) {
     $.ajax({
           type: "POST",
           url: url,
-          data: deleteId,
+          data: {id:deleteId},
           success: function(data)
           {
               alert(data); // show response from the node.js
