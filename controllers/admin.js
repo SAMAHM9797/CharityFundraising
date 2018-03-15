@@ -1,7 +1,7 @@
 var Blog        = require('../models/Blog');
 var Fundraiser  = require('../models/Fundraiser');
 var bookshelf   = require('../config/bookshelf');
-
+var Charity  = require('../models/Charity');
 
 /**
  * GET /
@@ -107,10 +107,11 @@ exports.viewCharities = function(req, res) {
  * todo validate id 
  **/
 exports.createCharity = function(req, res) {
-  req.assert('email', 'title cannot be blank').notEmpty();
-  req.assert('name', 'title cannot be blank').notEmpty();
-  req.assert('content', 'content cannot be blank').notEmpty();
+  // req.assert('email', 'title cannot be blank').notEmpty();
+  // req.assert('name', 'title cannot be blank').notEmpty();
+  // req.assert('content', 'content cannot be blank').notEmpty();
 
+  console.log(req.body);
   var errors = req.validationErrors();
 
   if (errors) {
@@ -118,12 +119,13 @@ exports.createCharity = function(req, res) {
     res.send("error");
   }
   
-  Blog.forge({
-    title:req.body.title,
+  Charity.forge({
+    email:req.body.email,
+    name:req.body.name,
     content:req.body.content
   }).save()
   .then(function () {
-      req.flash('success', { msg: 'Thank you! Your fundraiser has been posted' });
+      req.flash('success', { msg: 'Thank you! Your Charity has been posted' });
       res.send("success");
   });
 };
@@ -141,7 +143,8 @@ exports.editCharity = function(req,res){
   }).then(function () {
        req.flash('success', { msg: 'Your blog has been updated' });
        res.send("success");
-  });
+  })
+  
 };
 
 exports.viewCharity = function(req,res){

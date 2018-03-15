@@ -25,6 +25,9 @@ input {
 tr > th {
   color: white; }
 
+td {
+  color: black; }
+
 .modal-title {
   color: white; }
 
