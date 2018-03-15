@@ -117,6 +117,10 @@ $("#getDonation").click(function(e) {
         url: url,
         success: function(data) {
 
+
+
+            $("#donationList").empty();
+
             if (data.hasOwnProperty("unconfirmed_txrefs")) {
                 for (var i = 0; i < data.unconfirmed_txrefs.length; i++) {
                     $("#donationList").append("<div class = \" col-md-4 col-md-offset-4 donation\">" +
@@ -130,16 +134,11 @@ $("#getDonation").click(function(e) {
             if (data.hasOwnProperty("txrefs")) {
                 for (var i = 0; i < data.txrefs.length; i++) {
                     $("#donationList").append("<div class = \" col-md-4 col-md-offset-4  donation\">" +
-                        "<h3 class = \"bitcoinDonation\">Bitcoin Donation</h3>" +
-                        (data.txrefs[i].value / 100000000) +
-                        "<h3 class = \"confirmedDonation\">" + data.txrefs[i].confirmed + "</h3>" +
+                        "<h3 class = \"bitcoinDonation\">" + (data.txrefs[i].value / 100000000)  + " Bitcoin </h3>"  +
+                        "<h3 class = \"confirmedDonation\">" + data.txrefs[i].confirmed.substring(0,10) + "</h3>" +
                         "</div>");
                 }
             }
         }
     });
 });
-
-
-    
-
