@@ -99,6 +99,13 @@
 
 // })(jQuery);
 
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip(); 
+});
+
+$(document).ready(function() {
+    $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+});
 
 $("#getDonation").click(function(e) {
     $("li").find(".active").removeClass("active");
@@ -109,24 +116,19 @@ $("#getDonation").click(function(e) {
         type: "GET",
         url: url,
         success: function(data) {
-            for (var i = 0; i < data.txrefs.length; i++) {
-                var confirmed;
-                var received;
-                confirmed = data.txrefs[i].confirmed;
-                received = data.txrefs[i].received;
-
-                if (confirmed == undefined) {
-                    $("#donationList").append("<div class = \" col-md-12 donation\">" +
+        
+            for (var i = 0; i < data.unconfirmed_txrefs.length; i++) {
+                  $("#donationList").append("<div class = \" col-md-12 donation\">" +
                         "<h3 class = \"bitcoinDonation\">Bitcoin Donation</h3>" +
                         (data.txrefs[i].value / 100000000) +
-                        "<h3 class = \"unconfirmedDonation\">" + received + "</h3>" +
+                        "<h3 class = \"unconfirmedDonation\" data-toggle=\"tooltip\" title=\"We're waiting for this transaction to be confirmed!\">" + data.unconfirmed_txrefs[i].received + "</h3>" +
                         "</div>");
-                }
-                else {
+                
+            for (var i = 0; i < data.txrefs.length; i++) {
                     $("#donationList").append("<div class = \" col-md-12 donation\">" +
                         "<h3 class = \"bitcoinDonation\">Bitcoin Donation</h3>" +
                         (data.txrefs[i].value / 100000000) +
-                        "<h3 class = \"confirmedDonation\">" + confirmed + "</h3>" +
+                        "<h3 class = \"confirmedDonation\">" + data.txrefs[i].confirmed + "</h3>" +
                         "</div>");
                 }
             }

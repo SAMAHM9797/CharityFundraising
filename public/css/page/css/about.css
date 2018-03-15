@@ -52,4 +52,8 @@
 .confirmedDonation {
   color: green; }
 
+.donation {
+  text-align: center;
+  border-bottom: #ccc; }
+
 /*# sourceMappingURL=about.css.map */
