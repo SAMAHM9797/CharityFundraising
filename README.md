@@ -16,3 +16,6 @@
 mysql-ctl start 
 sass --watch main.scss:main.css
 
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
+
+git merge --no-ff --no-commit test
