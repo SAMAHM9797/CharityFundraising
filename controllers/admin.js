@@ -165,15 +165,15 @@ exports.viewCharity = function(req,res){
 
 //DONT GO ABOVE HERE\\
 
-exports.viewFundraisers = function(req, res) {
-  bookshelf.knex.select().from('fundraisers').then(function(fundraisers){
-    console.log(fundraisers);
-    res.render('admin/Fundraisers/viewFundraisers', {
-        title: 'view Fundraisers',
-        fundraisers:fundraisers
-      });
-  });
-};
+// exports.viewFundraisers = function(req, res) {
+//   bookshelf.knex.select().from('fundraisers').then(function(fundraisers){
+//     console.log(fundraisers);
+//     res.render('admin/Fundraisers/viewFundraisers', {
+//         title: 'view Fundraisers',
+//         fundraisers:fundraisers
+//       });
+//   });
+// };
 
 /**
  * Response to ajax call 
@@ -197,8 +197,7 @@ exports.createFundraiser= function(req, res) {
     title:req.body.title,
     content:req.body.content,
     walletAddress:req.body.walletAddress,
-    location:req.body.location, 
-    charity:req.body.charity 
+    charity:req.body.charity, 
     
   }).save()
   .then(function () {
@@ -218,7 +217,6 @@ exports.editFundraiser = function(req,res){
     title:req.body.title,
     content:req.body.content,
     walletAddress:req.body.walletAddress,
-    location:req.body.location, 
     charity:req.body.charity 
   }).then(function () {
        req.flash('success', { msg: 'Your fundraiser has been updated' });
@@ -239,3 +237,30 @@ exports.viewFundraiser = function(req,res){
       });
   });
 };
+
+exports.viewFundraisers = function(req,res){
+  var fundraiserId = req.params.fundraiserId; // get the parameter passed
+    //todo validation
+    bookshelf.knex.select('*').from('fundraisers').leftJoin('charities', 'fundraisers.id', 'charities.id')
+    .then(function(fundraisers){
+      console.log(fundraisers);
+       res.render('admin/Fundraisers/viewFundraisers', {
+        title: 'Fundraiser',
+        fundraisers:fundraisers
+      });
+  });
+};
+
+
+// exports.get= function(req,res){
+//   var fundraiserId = req.params.fundraiserId; // get the parameter passed
+//     //todo validation
+//     bookshelf.knex.select('*').from('fundraisers').leftJoin('charities', 'fundraisers.id', 'charities.id')
+//     .then(function(fundraisers){
+//       console.log(fundraisers);
+//       res.render('admin/Fundraisers/viewFundraisers', {
+//         title: 'Fundraiser',
+//         fundraiser:fundraisers
+//       });
+//   });
+// };

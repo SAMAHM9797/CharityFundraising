@@ -101,23 +101,38 @@
 
 
 $("#getDonation").click(function(e) {
-	$("li").find(".active").removeClass("active");
-	$(this).addClass("active");
-	console.log("hello")
+    $("li").find(".active").removeClass("active");
+    $(this).addClass("active");
+    console.log("hello")
     var url = "https://api.blockcypher.com/v1/btc/test3/addrs/mhKmx8fQfTdZyArpUpqAhz328HgtK32txn"; // the script where you handle the form input.
     $.ajax({
-           type: "GET",
-           url: url,
-           success: function(data)
-           {
-               alert(data); // show response from the node.js
-           }
-         });
+        type: "GET",
+        url: url,
+        success: function(data) {
+            for (var i = 0; i < data.txrefs.length; i++) {
+                var confirmed;
+                var received;
+                confirmed = data.txrefs[i].confirmed;
+                received = data.txrefs[i].received;
+
+                if (confirmed == undefined) {
+                    $("#donationList").append("<div class = \" col-md-12 donation\">" +
+                        "<h3 class = \"bitcoinDonation\">Bitcoin Donation</h3>" +
+                        (data.txrefs[i].value / 100000000) +
+                        "<h3 class = \"unconfirmedDonation\">" + received + "</h3>" +
+                        "</div>");
+                }
+                else {
+                    $("#donationList").append("<div class = \" col-md-12 donation\">" +
+                        "<h3 class = \"bitcoinDonation\">Bitcoin Donation</h3>" +
+                        (data.txrefs[i].value / 100000000) +
+                        "<h3 class = \"confirmedDonation\">" + confirmed + "</h3>" +
+                        "</div>");
+                }
+            }
+        }
+    });
+
 
     console.log("posted");
 });
-
-
-
-   
-   

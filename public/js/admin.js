@@ -83,5 +83,25 @@ $("#newCharityForm").submit(function(e) {
     e.preventDefault(); // avoid to execute the actual submit of the form.
 });
 
+$("#newFundraiserForm").submit(function(e) {
+
+    var url = "/admin/fundraisers"; // the script where you handle the form input.
+
+    $.ajax({
+           type: "POST",
+           url: url,
+           data: $("#newFundraiserForm").serialize(), // serializes the form's elements.
+           success: function(data)
+           {
+               alert(data); // show response from the node.js
+               $('#createModal').modal('toggle');
+               $('#table tr:last').after('<tr>...</tr><tr>...</tr>');
+           }
+         });
+
+    console.log("posted");
+    
+    e.preventDefault(); // avoid to execute the actual submit of the form.
+});
 
 
