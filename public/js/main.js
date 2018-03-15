@@ -99,8 +99,8 @@
 
 // })(jQuery);
 
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip(); 
+$(document).ready(function() {
+    $('[data-toggle="tooltip"]').tooltip();
 });
 
 $(document).ready(function() {
@@ -116,16 +116,20 @@ $("#getDonation").click(function(e) {
         type: "GET",
         url: url,
         success: function(data) {
-        
-            for (var i = 0; i < data.unconfirmed_txrefs.length; i++) {
-                  $("#donationList").append("<div class = \" col-md-12 donation\">" +
+
+            if (data.hasOwnProperty("unconfirmed_txrefs")) {
+                for (var i = 0; i < data.unconfirmed_txrefs.length; i++) {
+                    $("#donationList").append("<div class = \" col-md-4 col-md-offset-4 donation\">" +
                         "<h3 class = \"bitcoinDonation\">Bitcoin Donation</h3>" +
                         (data.txrefs[i].value / 100000000) +
                         "<h3 class = \"unconfirmedDonation\" data-toggle=\"tooltip\" title=\"We're waiting for this transaction to be confirmed!\">" + data.unconfirmed_txrefs[i].received + "</h3>" +
                         "</div>");
-                
-            for (var i = 0; i < data.txrefs.length; i++) {
-                    $("#donationList").append("<div class = \" col-md-12 donation\">" +
+                }
+            }
+
+            if (data.hasOwnProperty("txrefs")) {
+                for (var i = 0; i < data.txrefs.length; i++) {
+                    $("#donationList").append("<div class = \" col-md-4 col-md-offset-4  donation\">" +
                         "<h3 class = \"bitcoinDonation\">Bitcoin Donation</h3>" +
                         (data.txrefs[i].value / 100000000) +
                         "<h3 class = \"confirmedDonation\">" + data.txrefs[i].confirmed + "</h3>" +
@@ -134,7 +138,8 @@ $("#getDonation").click(function(e) {
             }
         }
     });
-
-
-    console.log("posted");
 });
+
+
+    
+
