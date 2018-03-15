@@ -86,7 +86,12 @@ app.post('/admin/charities',adminController.createCharity);
 app.post('/admin/charities/edit',adminController.editCharity);
 // app.post('/admin/charities/delete',adminController.deleteCharity);
 app.get('/admin/charities/:charitiesId(\\d+)?/', adminController.viewCharity);
-//admin/charities
+//admin/fundraisers
+app.get('/admin/fundraisers',adminController.viewFundraisers);
+app.post('/admin/fundraisers',adminController.createFundraiser);
+app.post('/admin/fundraisers/edit',adminController.editFundraiser);
+app.get('/admin/fundraisers/:fundraisersId(\\d+)?/',adminController.viewFundraiser);
+
 
 //User stuff
 app.get('/account', userController.ensureAuthenticated, userController.accountGet);

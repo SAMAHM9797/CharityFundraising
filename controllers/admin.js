@@ -159,3 +159,83 @@ exports.viewCharity = function(req,res){
       });
   });
 };
+
+
+//----------------------FundraiserStuff-------------------------\\
+
+//DONT GO ABOVE HERE\\
+
+exports.viewFundraisers = function(req, res) {
+  bookshelf.knex.select().from('fundraisers').then(function(fundraisers){
+    console.log(fundraisers);
+    res.render('admin/Fundraisers/viewFundraisers', {
+        title: 'view Fundraisers',
+        fundraisers:fundraisers
+      });
+  });
+};
+
+/**
+ * Response to ajax call 
+ * takes id and updates the record.
+ * todo validate id 
+ **/
+exports.createFundraisers= function(req, res) {
+  // req.assert('email', 'title cannot be blank').notEmpty();
+  // req.assert('name', 'title cannot be blank').notEmpty();
+  // req.assert('content', 'content cannot be blank').notEmpty();
+
+  console.log(req.body);
+  var errors = req.validationErrors();
+
+  if (errors) {
+    req.flash('error', errors);
+    res.send("error");
+  }
+  
+  Fundraiser.forge({
+    title:req.body.title,
+    content:req.body.content,
+    walletAddress:req.body.walletAddress,
+    location:req.body.location, 
+    charity:req.body.charity 
+    
+  }).save()
+  .then(function () {
+      req.flash('success', { msg: 'Thank you! Your Fundraiser has been posted' });
+      res.send("success");
+  });
+};
+
+/**
+ * Response to ajax call 
+ * takes id and updates the record.
+ * todo validate id 
+ **/
+exports.editFundraisers = function(req,res){
+  Fundraiser.forge({fundraiserId:34})
+  .save({
+    title:req.body.title,
+    content:req.body.content,
+    walletAddress:req.body.walletAddress,
+    location:req.body.location, 
+    charity:req.body.charity 
+  }).then(function () {
+       req.flash('success', { msg: 'Your fundraiser has been updated' });
+       res.send("success");
+  })
+  
+};
+
+exports.viewFundraisers = function(req,res){
+  var fundraiserId = req.params.fundraiserId; // get the parameter passed
+    //todo validation
+    bookshelf.knex.from('fundraiser').where('fundraiserId', fundraiserId).first()
+    .then(function(fundraiser){
+      console.log(fundraiser);
+       res.render('admin/Fundraisers/viewFundraisers', {
+        title: 'Fundraiser',
+        fundraiser:fundraiser
+      });
+  });
+};
