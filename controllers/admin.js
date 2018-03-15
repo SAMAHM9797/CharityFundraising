@@ -65,8 +65,14 @@ exports.editBlog = function(req,res){
 };
 
 exports.deleteBlog = function(req,res){
-  console.log(req.body.id);
-  res.send("success");
+  var id = req.body.id
+    Blog.forge({blogId:id})
+  .save({
+   deleted_at: knex.fn.now()
+  }).then(function () {
+       req.flash('success', { msg: 'Your blog has been updated' });
+       res.send("success");
+  });
   
 };
 

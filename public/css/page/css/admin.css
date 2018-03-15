@@ -25,4 +25,24 @@ input {
 tr > th {
   color: white; }
 
+.modal-title {
+  color: white; }
+
+.modal {
+  text-align: center; }
+
+@media screen and (min-width: 768px) {
+  .modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%; } }
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle; }
+
+.modal-header {
+  background-color: #FF9000; }
+
 /*# sourceMappingURL=admin.css.map */

@@ -14,9 +14,9 @@
 				<div class="inner">
 					<div class = "container">
 						<div class = "row">
-							<div class = "col-md-6">
+							<div class = "col-md-8">
 								{% for blog in blogs %}
-							    <div class = "col-md-6 image">
+							    <div class = "col-md-12">
     								<img src="images/pic03.jpg" class="img-fluid" alt="Responsive image">
     								<div class = "blog-card">
         								<h3 class = "blog-title">{{blog.title}}</h3>
@@ -27,6 +27,9 @@
 								{% else %}
  									 <li>This would display if the 'item' collection were empty</li>
 								{% endfor %}
+							</div>
+							<div class = "col-md-4 content">
+								sidebar
 							</div>
 						</div>
 					</div>
