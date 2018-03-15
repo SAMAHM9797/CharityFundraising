@@ -180,7 +180,7 @@ exports.viewFundraisers = function(req, res) {
  * takes id and updates the record.
  * todo validate id 
  **/
-exports.createFundraisers= function(req, res) {
+exports.createFundraiser= function(req, res) {
   // req.assert('email', 'title cannot be blank').notEmpty();
   // req.assert('name', 'title cannot be blank').notEmpty();
   // req.assert('content', 'content cannot be blank').notEmpty();
@@ -212,7 +212,7 @@ exports.createFundraisers= function(req, res) {
  * takes id and updates the record.
  * todo validate id 
  **/
-exports.editFundraisers = function(req,res){
+exports.editFundraiser = function(req,res){
   Fundraiser.forge({fundraiserId:34})
   .save({
     title:req.body.title,
@@ -227,7 +227,7 @@ exports.editFundraisers = function(req,res){
   
 };
 
-exports.viewFundraisers = function(req,res){
+exports.viewFundraiser = function(req,res){
   var fundraiserId = req.params.fundraiserId; // get the parameter passed
     //todo validation
     bookshelf.knex.from('fundraiser').where('fundraiserId', fundraiserId).first()
