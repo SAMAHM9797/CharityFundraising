@@ -42,9 +42,10 @@ exports.createBlog = function(req, res) {
     title:req.body.title,
     content:req.body.content
   }).save()
-  .then(function () {
+  .then(function (blog) {
+      console.log(blog.toJSON());
       req.flash('success', { msg: 'Thank you! Your blog has been posted' });
-      res.send("success");
+      res.send(blog.toJSON());
   });
 };
 
@@ -66,11 +67,11 @@ exports.editBlog = function(req,res){
 
 exports.deleteBlog = function(req,res){
   var id = req.body.id
-    Blog.forge({blogId:id})
+    Blog.forge({id})
   .save({
-   deleted_at: knex.fn.now()
+   deleted_at:new Date()
   }).then(function () {
-       req.flash('success', { msg: 'Your blog has been updated' });
+       req.flash('success', { msg: 'Your blog has been deleted' });
        res.send("success");
   });
   

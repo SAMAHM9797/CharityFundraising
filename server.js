@@ -73,26 +73,26 @@ app.get('/blog/create',blogController.blogGet);
 app.post('/blog/create',blogController.blogPost);
 
 //admin
-app.get('/admin*',userController.ensureAdmin,adminController.index);
-app.post('/admin*',userController.ensureAdmin,adminController.index);
+app.get('/admin',userController.ensureAdmin,adminController.index);
+
 
 //admin/blogs
-app.get('/admin/blogs',adminController.viewBlogs);
-app.post('/admin/blogs',adminController.createBlog);
-app.post('/admin/blogs/edit',adminController.editBlog);
-app.post('/admin/blogs/delete',adminController.deleteBlog);
-app.get('/admin/blogs/:blogId(\\d+)?/', adminController.viewBlog);
+app.get('/admin/blogs',userController.ensureAdmin,adminController.viewBlogs);
+app.post('/admin/blogs',userController.ensureAdmin,adminController.createBlog);
+app.post('/admin/blogs/edit',userController.ensureAdmin,adminController.editBlog);
+app.post('/admin/blogs/delete',userController.ensureAdmin,adminController.deleteBlog);
+app.get('/admin/blogs/:blogId(\\d+)?/', userController.ensureAdmin,adminController.viewBlog);
 //admin/charities
-app.get('/admin/charities',adminController.viewCharities);
-app.post('/admin/charities',adminController.createCharity);
-app.post('/admin/charities/edit',adminController.editCharity);
+app.get('/admin/charities',userController.ensureAdmin,adminController.viewCharities);
+app.post('/admin/charities',userController.ensureAdmin,adminController.createCharity);
+app.post('/admin/charities/edit',userController.ensureAdmin,adminController.editCharity);
 // app.post('/admin/charities/delete',adminController.deleteCharity);
-app.get('/admin/charities/:charitiesId(\\d+)?/', adminController.viewCharity);
+app.get('/admin/charities/:charitiesId(\\d+)?/', userController.ensureAdmin,adminController.viewCharity);
 //admin/fundraisers
-app.get('/admin/fundraisers',adminController.viewFundraisers);
-app.post('/admin/fundraisers',adminController.createFundraiser);
-app.post('/admin/fundraisers/edit',adminController.editFundraiser);
-app.get('/admin/fundraisers/:fundraisersId(\\d+)?/',adminController.viewFundraiser);
+app.get('/admin/fundraisers',userController.ensureAdmin,adminController.viewFundraisers);
+app.post('/admin/fundraisers',userController.ensureAdmin,adminController.createFundraiser);
+app.post('/admin/fundraisers/edit',userController.ensureAdmin,adminController.editFundraiser);
+app.get('/admin/fundraisers/:fundraisersId(\\d+)?/',userController.ensureAdmin,adminController.viewFundraiser);
 
 
 //User stuff

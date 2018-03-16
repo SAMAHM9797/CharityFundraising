@@ -108,10 +108,10 @@ $(document).ready(function() {
 });
 
 $("#getDonation").click(function(e) {
-    $("li").find(".active").removeClass("active");
-    $(this).addClass("active");
-    console.log("hello")
-    var url = "https://api.blockcypher.com/v1/btc/test3/addrs/mhKmx8fQfTdZyArpUpqAhz328HgtK32txn"; // the script where you handle the form input.
+    var address = $('#walletAddress').text();
+    console.log(address);
+    var url = "https://api.blockcypher.com/v1/btc/test3/addrs/" + address; // the script where you handle the form input.
+    console.log(url);
     $.ajax({
         type: "GET",
         url: url,
@@ -124,9 +124,8 @@ $("#getDonation").click(function(e) {
             if (data.hasOwnProperty("unconfirmed_txrefs")) {
                 for (var i = 0; i < data.unconfirmed_txrefs.length; i++) {
                     $("#donationList").append("<div class = \" col-md-4 col-md-offset-4 donation\">" +
-                        "<h3 class = \"bitcoinDonation\">Bitcoin Donation</h3>" +
-                        (data.txrefs[i].value / 100000000) +
-                        "<h3 class = \"unconfirmedDonation\" data-toggle=\"tooltip\" title=\"We're waiting for this transaction to be confirmed!\">" + data.unconfirmed_txrefs[i].received + "</h3>" +
+                         "<h3 class = \"bitcoinDonation\">" + (data.unconfirmed_txrefs[i].value / 100000000)  + " Bitcoin </h3>"  +
+                        "<h3 class = \"unconfirmedDonation\" data-toggle=\"tooltip\" title=\"We're waiting for this transaction to be confirmed!\">" + data.unconfirmed_txrefs[i].received.substring(0,10) + "</h3>" +
                         "</div>");
                 }
             }

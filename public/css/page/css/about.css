@@ -54,6 +54,9 @@
 
 .donation {
   text-align: center;
-  border-bottom: 1px solid #ccc; }
+  border-bottom: #ccc; }
+
+.unconfirmedDonation {
+  color: black; }
 
 /*# sourceMappingURL=about.css.map */

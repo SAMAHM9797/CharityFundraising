@@ -8,7 +8,7 @@
   </header>
 
   <!-- Main -->
-<section class="wrapper style2">
+  <section class="wrapper style2">
     <div class="inner">
       <div class="container">
         <div class="row">
@@ -37,6 +37,7 @@
             <tbody>
               <tr>
                 {% for blog in blogs %}
+                {% if blog.deleted_at == NULL %}
                 <th scope="row">{{blog.id}}</th>
                 <td>{{blog.title}}</td>
                 <td>{{blog.content}}</td>
@@ -48,26 +49,9 @@
                   <button type="button" class="edit btn btn-danger btn-sm " data-toggle="modal" data-target="#editModal">
                             <span class="glyphicon glyphicon-edit"  aria-hidden="true"></span>
                   </button>
-                  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header delete-header">
-                          <h4 class="modal-title">Delete</h4>
-                        </div>
-                        <div class="modal-body">
-                          <p>Are you sure you want to delete charity</p>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-danger">DELETE</button>
-                        </div>
-                      </div>
-                      <!-- /.modal-content -->
-                    </div>
-                    <!-- /.modal-dialog -->
-                  </div>
                 </td>
               </tr>
+              {% endif%}
               {%endfor%}
             </tbody>
           </table>
@@ -76,7 +60,24 @@
     </div>
   </section>
 </div>
-
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header delete-header">
+        <h4 class="modal-title">Delete</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete charity</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger">DELETE</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

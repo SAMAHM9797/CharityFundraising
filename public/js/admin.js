@@ -24,16 +24,29 @@ $(".delete").click(function(e) {
 $("#newBlogForm").submit(function(e) {
 
     var url = "/admin/blogs"; // the script where you handle the form input.
-
+    var formData =  $("#newBlogForm").serialize()
+    console.log(formData);
     $.ajax({
            type: "POST",
            url: url,
-           data: $("#newBlogForm").serialize(), // serializes the form's elements.
+           data:formData, // serializes the form's elements.
            success: function(data)
            {
-               alert(data); // show response from the node.js
                $('#createModal').modal('toggle');
-               $('#table tr:last').after('<tr>...</tr><tr>...</tr>');
+               $('tbody').append('<tr> <th scope = "row">' + data.id + '</td>'
+               +'<td>'+data.title+'</td>'
+               +'<td>'+data.content+'</td>'
+               +'<td></td>'
+               +'<td> <button type="button" class="delete btn btn-danger btn-sm" value="'+data.id+'" data-toggle="modal" data-target="#deleteModal">'
+               +'<span class="glyphicon glyphicon-trash"  aria-hidden="true"></span>'
+               +'</button>'
+               +'<button type="button" class="edit btn btn-danger btn-sm " data-toggle="modal" data-target="#editModal">'
+               +'<span class="glyphicon glyphicon-edit"  aria-hidden="true"></span>'
+               +'</button>'
+               +'</td>'
+               +'</tr>'
+             
+               );
            }
          });
 
@@ -51,7 +64,8 @@ $("#editBlogForm").submit(function(e) {
            data: $("#editBlogForm").serialize(), // serializes the form's elements.
            success: function(data)
            {
-               alert(data); // show response from the node.js
+               alert(data.id); // show response from the node.js
+               console.log(data.id);
                $('#editModal').modal('toggle');
                $('#table tr:last').after('<tr>...</tr><tr>...</tr>');
            }
