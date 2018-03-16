@@ -3,17 +3,37 @@ var crypto = require('crypto');
 var nodemailer = require('nodemailer');
 var passport = require('passport');
 var User = require('../models/User');
-
+var bookshelf = require('../config/bookshelf');
 /**
  * Login required middleware
  */
 exports.ensureAuthenticated = function(req, res, next) {
   if (req.isAuthenticated()) {
     next();
-  } else {
+  }
+  else {
     res.redirect('/login');
   }
 };
+
+exports.ensureAdmin = function(req, res, next) {
+
+
+  if (req.isAuthenticated()) {
+    var userId = req.user.id;
+    bookshelf.knex.from('users').leftJoin('roles', 'users.id', 'roles.id').where('users.id', userId).first()
+      .then(function(user) {
+        console.log(user);
+        if (user.role == "admin")
+          next();
+        else
+          res.redirect('/');
+      })
+  }
+  else {
+    res.redirect('/login');
+  }
+}
 
 /**
  * GET /login
@@ -92,14 +112,14 @@ exports.signupPost = function(req, res, next) {
   }
 
   new User({
-    name: req.body.name,
-    email: req.body.email,
-    password: req.body.password
-  }).save()
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password
+    }).save()
     .then(function(user) {
-        req.logIn(user, function(err) {
-          res.redirect('/');
-        });
+      req.logIn(user, function(err) {
+        res.redirect('/');
+      });
     })
     .catch(function(err) {
       if (err.code === 'ER_DUP_ENTRY' || err.code === '23505') {
@@ -126,7 +146,8 @@ exports.accountPut = function(req, res, next) {
   if ('password' in req.body) {
     req.assert('password', 'Password must be at least 4 characters long').len(4);
     req.assert('confirm', 'Passwords must match').equals(req.body.password);
-  } else {
+  }
+  else {
     req.assert('email', 'Email is not valid').isEmail();
     req.assert('email', 'Email cannot be blank').notEmpty();
     req.sanitize('email').normalizeEmail({ remove_dots: false });
@@ -142,7 +163,8 @@ exports.accountPut = function(req, res, next) {
   var user = new User({ id: req.user.id });
   if ('password' in req.body) {
     user.save({ password: req.body.password }, { patch: true });
-  } else {
+  }
+  else {
     user.save({
       email: req.body.email,
       name: req.body.name,
@@ -154,7 +176,8 @@ exports.accountPut = function(req, res, next) {
   user.then(function(user) {
     if ('password' in req.body) {
       req.flash('success', { msg: 'Your password has been changed.' });
-    } else {
+    }
+    else {
       req.flash('success', { msg: 'Your profile information has been updated.' });
     }
     res.redirect('/account');
@@ -197,12 +220,12 @@ exports.unlink = function(req, res, next) {
           user.set('vk', null);
           break;
         default:
-        req.flash('error', { msg: 'Invalid OAuth Provider' });
-        return res.redirect('/account');
+          req.flash('error', { msg: 'Invalid OAuth Provider' });
+          return res.redirect('/account');
       }
       user.save(user.changed, { patch: true }).then(function() {
-      req.flash('success', { msg: 'Your account has been unlinked.' });
-      res.redirect('/account');
+        req.flash('success', { msg: 'Your account has been unlinked.' });
+        res.redirect('/account');
       });
     });
 };
@@ -246,8 +269,8 @@ exports.forgotPost = function(req, res, next) {
         .fetch()
         .then(function(user) {
           if (!user) {
-        req.flash('error', { msg: 'The email address ' + req.body.email + ' is not associated with any account.' });
-        return res.redirect('/forgot');
+            req.flash('error', { msg: 'The email address ' + req.body.email + ' is not associated with any account.' });
+            return res.redirect('/forgot');
           }
           user.set('passwordResetToken', token);
           user.set('passwordResetExpires', new Date(Date.now() + 3600000)); // expire in 1 hour
@@ -269,9 +292,9 @@ exports.forgotPost = function(req, res, next) {
         from: 'support@charityfundraising',
         subject: '✔ Reset your password on charity fundraising',
         text: 'You are receiving this email because you (or someone else) have requested the reset of the password for your account.\n\n' +
-        'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
-        'http://' + req.headers.host + '/reset/' + token + '\n\n' +
-        'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+          'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
+          'http://' + req.headers.host + '/reset/' + token + '\n\n' +
+          'If you did not request this, please ignore this email and your password will remain unchanged.\n'
       };
       transporter.sendMail(mailOptions, function(err) {
         req.flash('info', { msg: 'An email has been sent to ' + user.email + ' with further instructions.' });
@@ -323,16 +346,16 @@ exports.resetPost = function(req, res, next) {
         .fetch()
         .then(function(user) {
           if (!user) {
-          req.flash('error', { msg: 'Password reset token is invalid or has expired.' });
-          return res.redirect('back');
+            req.flash('error', { msg: 'Password reset token is invalid or has expired.' });
+            return res.redirect('back');
           }
           user.set('password', req.body.password);
           user.set('passwordResetToken', null);
           user.set('passwordResetExpires', null);
           user.save(user.changed, { patch: true }).then(function() {
-          req.logIn(user, function(err) {
-            done(err, user.toJSON());
-          });
+            req.logIn(user, function(err) {
+              done(err, user.toJSON());
+            });
           });
         });
     },
@@ -349,7 +372,7 @@ exports.resetPost = function(req, res, next) {
         to: user.email,
         subject: 'Your charity fundraising password has been changed',
         text: 'Hello,\n\n' +
-        'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
+          'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
       };
       transporter.sendMail(mailOptions, function(err) {
         req.flash('success', { msg: 'Your password has been changed successfully.' });

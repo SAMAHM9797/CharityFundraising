@@ -1,7 +1,7 @@
 var crypto = require('crypto');
 var bcrypt = require('bcrypt-nodejs');
 var bookshelf = require('../config/bookshelf');
-
+var Role = require('./Role')
 var User = bookshelf.Model.extend({
   tableName: 'users',
   hasTimestamps: true,
@@ -26,6 +26,11 @@ var User = bookshelf.Model.extend({
     });
   },
 
+
+  role: function() {
+    return this.belongsTo(Role);
+  },
+
   comparePassword: function(password, done) {
     var model = this;
     bcrypt.compare(password, model.get('password'), function(err, isMatch) {
@@ -45,5 +50,6 @@ var User = bookshelf.Model.extend({
     }
   }
 });
+
 
 module.exports = User;

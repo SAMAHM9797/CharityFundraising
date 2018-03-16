@@ -73,7 +73,9 @@ app.get('/blog/create',blogController.blogGet);
 app.post('/blog/create',blogController.blogPost);
 
 //admin
-app.get('/admin',adminController.index);
+app.get('/admin*',userController.ensureAdmin,adminController.index);
+app.post('/admin*',userController.ensureAdmin,adminController.index);
+
 //admin/blogs
 app.get('/admin/blogs',adminController.viewBlogs);
 app.post('/admin/blogs',adminController.createBlog);
