@@ -61,8 +61,8 @@ app.post('/contact', contactController.contactPost);
 app.get('/fundraisers', fundRaiserController.index);
 app.get('/fundraisers/view/', fundRaiserController.view);
 app.get('/fundraisers/:id(\\d+)?/', fundRaiserController.viewOne);
-app.get('/fundraisers/create' , fundRaiserController.createGet);
-app.post('/fundraisers/create' , fundRaiserController.createPost);
+// app.get('/fundraisers/create' , fundRaiserController.createGet);
+// app.post('/fundraisers/create' , fundRaiserController.createPost);
 
 //charitites 
 app.get('/charities',charityController.index);
